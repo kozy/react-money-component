@@ -29,5 +29,16 @@ describe('Money', function() {
       var span = TestUtils.findRenderedDOMComponentWithTag(rendered, 'span');
       expect(findDOMNode(span).textContent).toEqual(expectedValue);
     });
+
   });
+
+  it('can formats the string if requested', function() {
+    var rendered = TestUtils.renderIntoDocument(
+      <Money cents={100} currency="EUR" format="%v %s" />
+    );
+
+    var span = TestUtils.findRenderedDOMComponentWithTag(rendered, 'span');
+    expect(findDOMNode(span).textContent).toEqual("1.00 €");
+  });
+
 });

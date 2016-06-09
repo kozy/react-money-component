@@ -4,11 +4,11 @@ import accounting from 'accounting';
 
 export default class Money extends React.Component {
   formattedAmount() {
-    const { cents, currency } = this.props;
+    const { cents, currency, format } = this.props;
     const { symbol, decimal_digits: precision } = Currency[currency];
     const amount = cents / Math.pow(10, precision);
 
-    return accounting.formatMoney(amount, { symbol, precision });
+    return accounting.formatMoney(amount, { symbol, precision, format });
   }
 
   render() {
